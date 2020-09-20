@@ -1,0 +1,2 @@
+read_verilog -sv top.sv blinky/blinky.sv
+debug synth_ecp5 -noccu2 -nomux -nodram -top top -json build/ulx3s.json
