@@ -3,12 +3,12 @@ module blinky(
     output logic led
 );
 
-    logic led_state = 0;
+    logic [24:0] count = 0;
 
-    assign led = led_state;
+    assign led = count[24];
 
     always_ff @(posedge clk) begin
-        led_state <= ~led_state;
+        count <= count + 1;
     end
 
 endmodule
