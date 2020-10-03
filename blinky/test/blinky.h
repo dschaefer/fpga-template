@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <blinky/Vblinky.h>
+#include <Vblinky.h>
 
 class BlinkyTest: public ::testing::Test {
 protected:

@@ -23,7 +23,7 @@ TEST_OBJS = $(BLINKY_TEST_SRCS:%.cpp=build/%.o)
 GTESTLIB = gtest/lib/libgtest_main.a gtest/lib/libgtest.a
 
 test: $(TEST_OBJS) $(BLINKY_LIB) $(VERILATOR_INCS)/verilated.cpp $(GTESTLIB)
-	$(CXX) -o $@ $^ -lpthread
+	$(CXX) -std=c++17 -o $@ $^ -lpthread
 
 ulx3s.bit: ulx3s.ys top.sv $(BLINKY_SV)
 	@mkdir -p build
@@ -34,7 +34,7 @@ ulx3s.bit: ulx3s.ys top.sv $(BLINKY_SV)
 
 $(TEST_OBJS): build/%.o:%.cpp $(TEST_LIBS)
 	@mkdir -p $(dir $@)
-	$(CXX) -c -MMD -std=c++17 -I$(VERILATOR_INCS) -Ibuild -Igoogletest/googletest/include -o $@ $<
+	$(CXX) -c -MMD -std=c++17 -I$(VERILATOR_INCS) -Ibuild/blinky -Igoogletest/googletest/include -o $@ $<
 
 $(GTESTLIB):
 	mkdir -p gtest
