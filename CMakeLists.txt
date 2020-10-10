@@ -23,7 +23,7 @@ add_custom_target(bitstream ALL
 add_custom_command(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/blinky.bit"
     COMMAND yosys 
-        -p "debug synth_ecp5 -noccu2 -nomux -nodram -top top -json blinky.json"
+        -p "synth_ecp5 -top top -json blinky.json"
         ${CMAKE_CURRENT_SOURCE_DIR}/top.sv
         ${CMAKE_CURRENT_SOURCE_DIR}/blinky/blinky.sv
         > yosys.out
