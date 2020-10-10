@@ -4,9 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "make",
+            "label": "build",
             "type": "shell",
-            "command": "make -j4",
+            "command": "./build.sh",
             "problemMatcher": [],
             "group": {
                 "kind": "build",

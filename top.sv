@@ -5,11 +5,7 @@ module top(
 
     blinky blink(
         .clk(clk_25mhz),
-        .led(o_led)
+        .led(led)
     );
-
-    logic o_led;
-
-    assign led[0] = o_led;
 
 endmodule
