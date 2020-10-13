@@ -1,5 +1,6 @@
 module blinky(
-    input logic clk,
+    input clk,
+    input nreset,
     output logic [7:0] led
 );
 
@@ -7,7 +8,10 @@ module blinky(
     logic [2:0] index = 3'b111;
 
     always_ff @(posedge clk) begin
-        if (count == 0) begin
+        if (~nreset) begin
+            led[index] <= 0;
+            index <= 0;
+        end else if (count == 0) begin
             led[index] <= 0;
             index <= index + 1;
         end else begin
