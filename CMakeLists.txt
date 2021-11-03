@@ -30,7 +30,9 @@ add_custom_command(
 	COMMAND nextpnr-ecp5 --85k --json blinky.json --package CABGA381
         --lpf ${CMAKE_CURRENT_SOURCE_DIR}/ulx3s_v20.lpf
 		--textcfg blinky.config 2> nextpnr.out
-	COMMAND ecppack blinky.config blinky.bit
+	COMMAND ecppack --compress --freq 62.0
+        --input blinky.config
+        --bit blinky.bit
     DEPENDS 
         ${CMAKE_CURRENT_SOURCE_DIR}/top.sv
         ${CMAKE_CURRENT_SOURCE_DIR}/blinky/blinky.sv
