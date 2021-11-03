@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(dasputer)
 
+include(Dart)
+
 enable_testing()
 include(GoogleTest)
 add_subdirectory(googletest)
@@ -14,6 +16,11 @@ add_executable(blinky_test
 target_link_libraries(blinky_test PUBLIC gtest_main)
 verilate(blinky_test SOURCES
     blinky/blinky.sv
+)
+
+add_test(
+    NAME blinky_test
+    COMMAND blinky_test
 )
 
 add_custom_target(bitstream ALL
