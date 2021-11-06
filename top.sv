@@ -4,19 +4,23 @@ module top(
     output [7:0] led
 );
 
-    wire clk_100mhz;
+    wire [3:0] clocks;
     wire nreset, locked;
 
-    clocks clocks(
-        .clkin(clk_25mhz),
-        .clkout0(clk_100mhz),
+    ecp5pll #(
+        .in_hz(25_000_000),
+        .out0_hz(400_000_000)
+    ) ecp5pll_1 (
+        .clk_i(clk_25mhz),
+        .clk_o(clocks),
         .locked(locked)
     );
 
     assign nreset = btn[0] & locked;
+    assign blink_clock = clocks[0];
 
     blinky blink(
-        .clk(clk_100mhz),
+        .clk(blink_clock),
         .nreset(nreset),
         .led(led)
     );

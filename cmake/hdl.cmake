@@ -18,9 +18,8 @@ function(hdl_bit NAME)
             ${HDL_SOURCES}
             > yosys.out
     	COMMAND nextpnr-ecp5
-            --85k
+            --85k --timing-allow-fail
             --json ${NAME}.json
-            --package CABGA381
             --lpf ${CMAKE_CURRENT_SOURCE_DIR}/ulx3s_v20.lpf
     		--textcfg ${NAME}.config
             2> nextpnr.out

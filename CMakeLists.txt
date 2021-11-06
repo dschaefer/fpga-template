@@ -15,7 +15,7 @@ hdl_bit(blinky
     TOP top
     SOURCES
         top.sv
-        clocks.sv
+        ecp5pll.sv
         blinky/blinky.sv
 )
 
