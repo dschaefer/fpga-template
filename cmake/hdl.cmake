@@ -36,12 +36,12 @@ function(hdl_test NAME)
     set(multiValueArgs SOURCES TEST_SOURCES)
     cmake_parse_arguments(HDL "" "${singleValueArgs}" "${multiValueArgs}" ${ARGN})
 
-    add_executable(${NAME}_test ${HDL_TEST_SOURCES})
-    target_link_libraries(${NAME}_test PUBLIC gtest_main)
-    verilate(${NAME}_test SOURCES ${HDL_SOURCES})
+    add_executable(${NAME} ${HDL_TEST_SOURCES})
+    target_link_libraries(${NAME} PUBLIC gtest_main)
+    verilate(${NAME} SOURCES ${HDL_SOURCES})
 
     add_test(
-        NAME ${NAME}_test
-        COMMAND ${NAME}_test
+        NAME ${NAME}
+        COMMAND ${NAME}
     )
 endfunction(hdl_test)

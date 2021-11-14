@@ -19,7 +19,7 @@ hdl_bit(blinky
         blinky/blinky.sv
 )
 
-hdl_test(blinky
+hdl_test(blinky_test
     SOURCES
         blinky/blinky.sv
     TEST_SOURCES
