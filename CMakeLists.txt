@@ -4,12 +4,8 @@ project(dasputer)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
-include(hdl)
-
 enable_testing()
-include(Dart)
-include(GoogleTest)
-add_subdirectory(googletest)
+include(hdl)
 
 hdl_bit(blinky
     TOP top

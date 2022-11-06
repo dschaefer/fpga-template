@@ -1,4 +1,5 @@
-find_package(verilator)
+find_package(verilator REQUIRED)
+find_package(GTest REQUIRED)
 
 function(hdl_bit NAME)
     set(singleValueArgs TOP)
@@ -37,8 +38,9 @@ function(hdl_test NAME)
     cmake_parse_arguments(HDL "" "${singleValueArgs}" "${multiValueArgs}" ${ARGN})
 
     add_executable(${NAME} ${HDL_TEST_SOURCES})
-    target_link_libraries(${NAME} PUBLIC gtest_main)
-    verilate(${NAME} SOURCES ${HDL_SOURCES})
+    verilate(${NAME} TRACE_FST SOURCES ${HDL_SOURCES})
+    target_link_libraries(${NAME} PUBLIC GTest::gtest GTest::gtest_main)
+
 
     add_test(
         NAME ${NAME}
